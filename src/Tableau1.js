@@ -162,8 +162,8 @@ class Tableau1 extends Phaser.Scene{
         //définit à quelles vitesse se déplacent nos différents plans
         bgAnimationA.scrollFactorX=0;
         this.filterFilm.scrollFactorX=0;
-        this.bg2Container.scrollFactorX=0.2;
-        this.bg1Container.scrollFactorX=0.4;
+        this.bg2Container.scrollFactorX=0.4;
+        this.bg1Container.scrollFactorX=0.8;
         this.groundContainer.scrollFactorX=1;
     }
     /**
@@ -177,10 +177,10 @@ class Tableau1 extends Phaser.Scene{
             switch (kevent.keyCode)
             {
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.speed=20;
+                    me.speed=1;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.speed=-20;
+                    me.speed=-1;
                     break;
             }
         });
