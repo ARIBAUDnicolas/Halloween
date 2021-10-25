@@ -17,7 +17,8 @@ class Tableau1 extends Phaser.Scene{
         //ground (premier plan noir)
         this.load.image('gMid', 'assets/level/ground/g-mid.png');
         this.load.image('gRight', 'assets/level/ground/g-right.png');
-        this.load.image('gTree1', 'assets/level/ground/g-tree-1.png');
+        this.load.image('gTree1', 'assets/level/ground/g-tree-2.png');
+        this.load.image('gMushroom1', 'assets/level/ground/g-mushroom1.png');
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
         // ALGO : ceci est une boucle
@@ -101,6 +102,8 @@ class Tableau1 extends Phaser.Scene{
         let tree1=this.add.image(300,360, 'gTree1').setOrigin(0,1);
         tree1.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(tree1);
+        tree1.scaleX=0.7;
+        tree1.scaleY=0.65;
         /**
          * Arbre2
          * @type {Phaser.GameObjects.Image}
@@ -108,9 +111,19 @@ class Tableau1 extends Phaser.Scene{
         let tree2=this.add.image(150,360, 'gTree1').setOrigin(0,1);
         tree2.setTintFill(0xFF0000); // pratique pour dbugger
         tree2.angle=-1;
-        tree2.scaleX=-1.2;
-        tree2.scaleY=1.2;
+        tree2.scaleX=-0.7;
+        tree2.scaleY=0.8;
         this.groundContainer.add(tree2);
+        /**
+         * Champi
+         * @type {Phaser.GameObjects.Image}
+         */
+        let mushr=this.add.image(250,360, 'gMushroom1').setOrigin(0,1);
+        mushr.setTintFill(0xFF0000); // pratique pour dbugger
+        mushr.angle=-1;
+        mushr.scaleX=-1.1;
+        mushr.scaleY=1.2;
+        this.groundContainer.add(mushr);
 
         /**
          * Terrain 1
