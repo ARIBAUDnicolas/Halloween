@@ -183,10 +183,10 @@ class Tableau1 extends Phaser.Scene{
                     me.speed=-1;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.Q:
-                    me.speed=1;
+                    me.speed=-1;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.D:
-                    me.speed=-1;
+                    me.speed=1;
                     break;
             }
         });
