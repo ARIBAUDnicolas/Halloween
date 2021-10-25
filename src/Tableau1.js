@@ -196,6 +196,8 @@ class Tableau1 extends Phaser.Scene{
             {
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
+                case Phaser.Input.Keyboard.KeyCodes.D:
+                case Phaser.Input.Keyboard.KeyCodes.Q:
                     me.speed=0;
                     break;
             }
