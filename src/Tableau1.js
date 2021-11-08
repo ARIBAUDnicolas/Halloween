@@ -26,6 +26,9 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gstone2', 'assets/level/ground/g-stone-4.png');
         this.load.image('gwater', 'assets/level/ground/g-water.png');
         this.load.image('gTree2', 'assets/level/ground/g-tree-1.png');
+        this.load.image('gstone3', 'assets/level/ground/g-stone-5.png');
+        this.load.image('Ftree', 'assets/level/ground/g-fellen-tree-1.png');
+
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
         // ALGO : ceci est une boucle
@@ -202,6 +205,85 @@ class Tableau1 extends Phaser.Scene{
         Grass.scaleY=1.1;
 
         this.groundContainer.add(Grass);
+        /**
+         * Grassbis
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Grass1=this.add.image(1250,415, 'g-grass-5').setOrigin(0,1);
+        //Grass1.setTintFill(0xFF0000); // pratique pour dbugger
+        Grass1.scaleY=1.1;
+
+        this.groundContainer.add(Grass);
+        /**
+         * Tree4
+         * @type {Phaser.GameObjects.Image}
+         */
+        let tree4=this.add.image(1350,400, 'gTree1').setOrigin(0,1);
+        //tree4.setTintFill(0xFF0000); // pratique pour dbugger
+        this.groundContainer.add(tree4);
+        tree4.scaleX=0.7;
+        tree4.scaleY=1.2;
+        /**
+         * it's Big Stone Time
+         * @type {Phaser.GameObjects.Image}
+         */
+        let stone3=this.add.image(1330,410, 'gstone3').setOrigin(0,1);
+        //stone3.setTintFill(0xFF0000); // pratique pour dbugger
+        this.groundContainer.add(stone3);
+        stone3.scaleX=1.5;
+        stone3.scaleY=1.5;
+        /**
+         * Chroom2.O
+         * @type {Phaser.GameObjects.Image}
+         */
+        let mushr2=this.add.image(1670,425, 'gMushroom1').setOrigin(0,1);
+        //mushr2.setTintFill(0xFF0000); // pratique pour dbugger
+        mushr2.angle=-1;
+        mushr2.scaleX=0.8;
+        mushr2.scaleY=1;
+        this.groundContainer.add(mushr2);
+        /**
+         * Grass2
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Grass2=this.add.image(1610,425, 'g-grass-2').setOrigin(0,1);
+        //Grass2.setTintFill(0xFF0000); // pratique pour dbugger
+        Grass2.angle=-1;
+        Grass2.scaleY=1.1;
+        this.groundContainer.add(mushr2);
+        /**
+         * Grass3
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Grass3=this.add.image(1610,425, 'g-grass-2').setOrigin(0,1);
+        //Grass3.setTintFill(0xFF0000); // pratique pour dbugger
+        Grass3.angle=-1;
+        Grass3.scaleY=1.1;
+        this.groundContainer.add(Grass3);
+        /**
+         * F for respect
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Fallen=this.add.image(1790,405, 'Ftree').setOrigin(0,1);
+        //Fallen.setTintFill(0xFF0000); // pratique pour dbugger
+        Fallen.angle=5.5;
+        Fallen.scaleY=1;
+        this.groundContainer.add(Fallen);
+        /**
+         * Grass again
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Grass5=this.add.image(1745,425, 'g-grass-1').setOrigin(0,1);
+        //Grass5.setTintFill(0xFF0000); // pratique pour dbugger
+        this.groundContainer.add(Grass5);
+        /**
+         * Grass again again
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Grass6=this.add.image(1770,430, 'g-grass-1').setOrigin(0,1);
+        //Grass6.setTintFill(0xFF0000); // pratique pour dbugger
+        this.groundContainer.add(Grass6);
+
 
 
 
@@ -244,11 +326,23 @@ class Tableau1 extends Phaser.Scene{
         let gMid6=this.add.image(gMid5.x+gMid5.width,400, 'gMid').setOrigin(0,0);
         this.groundContainer.add(gMid6);
         /**
-         * Terrain 6
+         * Terrain 7
          * @type {Phaser.GameObjects.Image}
          */
         let gMid7=this.add.image(gMid6.x+gMid6.width,400, 'gRight').setOrigin(0,0);
         this.groundContainer.add(gMid7);
+        /**
+         * Terrain 8
+         * @type {Phaser.GameObjects.Image}
+         */
+        let gMid8=this.add.image(2200,425, 'gLeft').setOrigin(0,0);
+        this.groundContainer.add(gMid8);
+        /**
+         * Terrain 9
+         * @type {Phaser.GameObjects.Image}
+         */
+        let gMid9=this.add.image(gMid8.x+gMid8.width,425, 'gRight').setOrigin(0,0);
+        this.groundContainer.add(gMid9);
 
 
 
@@ -293,7 +387,7 @@ class Tableau1 extends Phaser.Scene{
         //initialise ce qui se passe avec le clavier
         this.initKeyboard();
         // Définit l'espace de déplacement de la caméra
-        this.cameras.main.setBounds(0, 0, 2200, 540);
+        this.cameras.main.setBounds(0, 0, 3000, 540);
         //définit à quelles vitesse se déplacent nos différents plans
         bgAnimationA.scrollFactorX=0;
         this.filterFilm.scrollFactorX=0;
@@ -318,10 +412,10 @@ class Tableau1 extends Phaser.Scene{
                     me.speed=-20;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.Q:
-                    me.speed=-10;
+                    me.speed=-50;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.D:
-                    me.speed=10;
+                    me.speed=50;
                     break;
             }
         });
