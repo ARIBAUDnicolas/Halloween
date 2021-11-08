@@ -183,12 +183,26 @@ class Tableau1 extends Phaser.Scene{
         let gMid3=this.add.image(gMid2.x+gMid2.width,350, 'gRight').setOrigin(0,0);
         this.groundContainer.add(gMid3);
         /**
-         * Terrain 3
+         * Terrain 4
          * @type {Phaser.GameObjects.Image}
          */
-        let gMid4=this.add.image(1200,350, 'gLeft').setOrigin(0,0);
+            //ici on va calculer les positions
+        let gMid4=this.add.image(2000,350, 'gMid').setOrigin(0,0);
         this.groundContainer.add(gMid4);
 
+        /**
+         * Terrain 5
+         * @type {Phaser.GameObjects.Image}
+         */
+        let gMid5=this.add.image(gMid4.x+gMid4.width,350, 'gLeft').setOrigin(0,0); //on rajoute 1 px pour l'exemple
+        this.groundContainer.add(gMid5);
+
+        /**
+         * Terrain 6
+         * @type {Phaser.GameObjects.Image}
+         */
+        let gMid6=this.add.image(gMid5.x+gMid5.width,350, 'gRight').setOrigin(0,0);
+        this.groundContainer.add(gMid6);
         /**
          * De l'herbe en textures qui se répète
          * @type {Phaser.GameObjects.TileSprite}
