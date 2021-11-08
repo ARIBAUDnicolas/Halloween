@@ -10,10 +10,12 @@ class Tableau1 extends Phaser.Scene{
         //bg 2 (tout au fond et très flou)
         this.load.image('bg2-terrain-2', 'assets/level/background-2/bg2-terrain-2.png');
         this.load.image('bg2-tree-2', 'assets/level/background-2/bg2-tree-2.png');
-
+        this.load.image('bg2-terrain-2b', 'assets/level/background-2/bg2-terrain-1.png');
         //bg 1 (gris légèrement flou)
         this.load.image('bg1-terrain-3', 'assets/level/background-1/bg-terrain-3.png');
-
+        this.load.image('bg2-tree-1', 'assets/level/background-1/bg2-tree-1.png');
+        this.load.image('bg2-tree-2', 'assets/level/background-1/bg2-tree-2.png');
+        this.load.image('bg2-tree-3', 'assets/level/background-1/bg2-tree-3.png');
         //ground (premier plan noir)
         this.load.image('gMid', 'assets/level/ground/g-mid.png');
         this.load.image('gRight', 'assets/level/ground/g-right.png');
@@ -29,7 +31,10 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gstone3', 'assets/level/ground/g-stone-5.png');
         this.load.image('Ftree', 'assets/level/ground/g-fellen-tree-1.png');
 
-
+        // Boucle zombie
+        for(let i=1;i<=16;i++){
+            this.load.image('Z'+i, 'assets/zombies/z'+i+'.png');
+        }
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
         // ALGO : ceci est une boucle
         for(let i=1;i<=5;i++){
@@ -76,13 +81,23 @@ class Tableau1 extends Phaser.Scene{
          */
         let bg2Terrain2=this.add.image(-100,100, 'bg2-terrain-2').setOrigin(0,0);
         this.bg2Container.add(bg2Terrain2);
+
+        let bg2Terrain2b=this.add.image(780,110, 'bg2-terrain-2b').setOrigin(0,0);
+        this.bg2Container.add(bg2Terrain2b);
+        bg2Terrain2b.scaleX = 0.8
         /**
          * Arbre dans bg2
          * @type {Phaser.GameObjects.Image}
          */
         let bg2Tree2=this.add.image(400,-50, 'bg2-tree-2').setOrigin(0,0);
         this.bg2Container.add(bg2Tree2);
-        bg2Tree2.angle=-5; //pencher l'arbre de -5 degrès
+        bg2Tree2.angle=-5;//pencher l'arbre de -5 degrès
+
+        let bg2Tree2b=this.add.image(900,-50, 'bg2-tree-2').setOrigin(0,0);
+        bg2Tree2b.scaleY=0.8;
+        bg2Tree2b.scaleX=0.8;
+        this.bg2Container.add(bg2Tree2b);
+
 
         //--------------background 1 (gris) --------------------
 
@@ -283,10 +298,39 @@ class Tableau1 extends Phaser.Scene{
         let Grass6=this.add.image(1770,430, 'g-grass-1').setOrigin(0,1);
         //Grass6.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(Grass6);
-
-
-
-
+        /**
+         * Maitre Gims
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Zombo=this.add.image(370,360, 'Z1').setOrigin(0,1);
+        //Zombo.setTintFill(0xFF0000); // pratique pour dbugger
+        this.groundContainer.add(Zombo);
+        /**
+         * Fzombo
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Zombo2=this.add.image(1950,370, 'Z4').setOrigin(0,1);
+        //Zombo2.setTintFill(0xFF0000); // pratique pour dbugger
+        Zombo2.angle=10.5;
+        this.groundContainer.add(Zombo2);
+        /**
+         * G plus d'inspi
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Zombo3=this.add.image(2450,430, 'Z5').setOrigin(0,1);
+        //Zombo3.setTintFill(0xFF0000); // pratique pour dbugger
+        Zombo3.scaleX=-1;
+        Zombo3.angle=-6.5;
+        this.groundContainer.add(Zombo3);
+        /**
+         * a f'nish'n bow' o' wo'er
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Water2=this.add.image(2575,700, 'gwater').setOrigin(0,1);
+        //Water2.setTintFill(0xFF0000); // pratique pour dbugger
+        Water2.scaleX=10;
+        this.groundContainer.add(Water2);
+        this.groundContainer.sendToBack();
 
         /**
          * Terrain 1
