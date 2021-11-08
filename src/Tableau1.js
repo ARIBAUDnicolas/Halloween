@@ -25,6 +25,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gbox', 'assets/level/ground/g-box-2.png');
         this.load.image('gstone2', 'assets/level/ground/g-stone-4.png');
         this.load.image('gwater', 'assets/level/ground/g-water.png');
+        this.load.image('gTree2', 'assets/level/ground/g-tree-1.png');
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
         // ALGO : ceci est une boucle
@@ -104,7 +105,7 @@ class Tableau1 extends Phaser.Scene{
          */
         this.groundContainer=this.add.container(0,0);
         /**
-         * Arbre
+         * Tree
          * @type {Phaser.GameObjects.Image}
          */
         let tree1=this.add.image(300,360, 'gTree1').setOrigin(0,1);
@@ -113,7 +114,7 @@ class Tableau1 extends Phaser.Scene{
         tree1.scaleX=0.7;
         tree1.scaleY=0.65;
         /**
-         * Arbre2
+         * Tree2
          * @type {Phaser.GameObjects.Image}
          */
         let tree2=this.add.image(150,360, 'gTree1').setOrigin(0,1);
@@ -123,7 +124,7 @@ class Tableau1 extends Phaser.Scene{
         tree2.scaleY=0.8;
         this.groundContainer.add(tree2);
         /**
-         * Champi
+         * Chroom
          * @type {Phaser.GameObjects.Image}
          */
         let mushr=this.add.image(250,360, 'gMushroom1').setOrigin(0,1);
@@ -181,6 +182,28 @@ class Tableau1 extends Phaser.Scene{
         Water.scaleX=1.5;
         this.groundContainer.add(Water);
         this.groundContainer.sendToBack();
+        /**
+         * Tree3
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Tree3=this.add.image(1305,430, 'gTree2').setOrigin(0,1);
+        //Tree3.setTintFill(0xFF0000); // pratique pour dbugger
+        Tree3.angle=-7;
+        Tree3.scaleX=-0.9;
+        Tree3.scaleY=1.1;
+
+        this.groundContainer.add(Tree3);
+        /**
+         * Grass
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Grass=this.add.image(1200,415, 'g-grass-5').setOrigin(0,1);
+        //Grass.setTintFill(0xFF0000); // pratique pour dbugger
+        Grass.scaleY=1.1;
+
+        this.groundContainer.add(Grass);
+
+
 
 
         /**
@@ -289,10 +312,10 @@ class Tableau1 extends Phaser.Scene{
             switch (kevent.keyCode)
             {
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.speed=10;
+                    me.speed=20;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.speed=-10;
+                    me.speed=-20;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.Q:
                     me.speed=-10;
