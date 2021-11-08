@@ -13,9 +13,9 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('bg2-terrain-2b', 'assets/level/background-2/bg2-terrain-1.png');
         //bg 1 (gris légèrement flou)
         this.load.image('bg1-terrain-3', 'assets/level/background-1/bg-terrain-3.png');
-        this.load.image('bg2-tree-1', 'assets/level/background-1/bg2-tree-1.png');
-        this.load.image('bg2-tree-2', 'assets/level/background-1/bg2-tree-2.png');
-        this.load.image('bg2-tree-3', 'assets/level/background-1/bg2-tree-3.png');
+        this.load.image('bg-tree-1', 'assets/level/background-1/bg-tree-1.png');
+        this.load.image('bg-tree-2', 'assets/level/background-1/bg-tree-2.png');
+        this.load.image('bg-tree-3', 'assets/level/background-1/bg-tree-3.png');
         //ground (premier plan noir)
         this.load.image('gMid', 'assets/level/ground/g-mid.png');
         this.load.image('gRight', 'assets/level/ground/g-right.png');
@@ -112,6 +112,14 @@ class Tableau1 extends Phaser.Scene{
          */
         let bg1Terrain3=this.add.image(-300,200, 'bg1-terrain-3').setOrigin(0,0);
         this.bg1Container.add(bg1Terrain3);
+        let bg1Tree1=this.add.image(-15,-100, 'bg-tree-1').setOrigin(0,0);
+        bg1Tree1.scaleY=1;
+        bg1Tree1.scaleX=0.75;
+        this.bg2Container.add(bg1Tree1);
+        let bg1Tree2=this.add.image(185,-125, 'bg-tree-3').setOrigin(0,0);
+        bg1Tree2.scaleY=0.8;
+        bg1Tree2.scaleX=0.55;
+        this.bg2Container.add(bg1Tree2);
 
 
 
