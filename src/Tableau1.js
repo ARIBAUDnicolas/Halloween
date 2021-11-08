@@ -95,6 +95,7 @@ class Tableau1 extends Phaser.Scene{
         this.bg1Container.add(bg1Terrain3);
 
 
+
         //-------------ground (premier plan noir)---------------------------
 
         /**
@@ -167,19 +168,19 @@ class Tableau1 extends Phaser.Scene{
          * @type {Phaser.GameObjects.Image}
          */
         let Stone2=this.add.image(1075,440, 'gstone2').setOrigin(0,1);
-        Stone2.setTintFill(0xFF0000); // pratique pour dbugger
+        //Stone2.setTintFill(0xFF0000); // pratique pour dbugger
         Stone2.scaleX=1.3;
         Stone2.scaleY=2;
         this.groundContainer.add(Stone);
         /**
-         * Stone2
+         * a bow' o' wo'er
          * @type {Phaser.GameObjects.Image}
          */
-        let Stone2=this.add.image(1075,440, 'gstone2').setOrigin(0,1);
-        Stone2.setTintFill(0xFF0000); // pratique pour dbugger
-        Stone2.scaleX=1.3;
-        Stone2.scaleY=2;
-        this.groundContainer.add(Stone);
+        let Water=this.add.image(575,650, 'gwater').setOrigin(0,1);
+        //Water.setTintFill(0xFF0000); // pratique pour dbugger
+        Water.scaleX=1.5;
+        this.groundContainer.add(Water);
+        this.groundContainer.sendToBack();
 
 
         /**
