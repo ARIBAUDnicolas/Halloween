@@ -23,6 +23,8 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gbridge', 'assets/level/ground/g-wooden-bridge.png');
         this.load.image('gstone1', 'assets/level/ground/g-stone-1.png');
         this.load.image('gbox', 'assets/level/ground/g-box-2.png');
+        this.load.image('gstone2', 'assets/level/ground/g-stone-4.png');
+        this.load.image('gwater', 'assets/level/ground/g-water.png');
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
         // ALGO : ceci est une boucle
@@ -32,7 +34,7 @@ class Tableau1 extends Phaser.Scene{
 
         //filtre film TODO élève : faire une boucle à la place des 3 lignes qui suivent FAIT
         for(let i=1;i<=3;i++){
-            this.load.image('filterFilm'+i, 'assets/level/filters/film/frame-'+i+'.png');
+            this.load.image('filterFilm'+i, 'assets/level/filters/bloody/frame'+i+'.png');
         }
 
         //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple FAIT
@@ -160,7 +162,24 @@ class Tableau1 extends Phaser.Scene{
         Box.scaleX=0.9;
         Box.scaleY=0.9;
         this.groundContainer.add(Box);
-
+        /**
+         * Stone2
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Stone2=this.add.image(1075,440, 'gstone2').setOrigin(0,1);
+        Stone2.setTintFill(0xFF0000); // pratique pour dbugger
+        Stone2.scaleX=1.3;
+        Stone2.scaleY=2;
+        this.groundContainer.add(Stone);
+        /**
+         * Stone2
+         * @type {Phaser.GameObjects.Image}
+         */
+        let Stone2=this.add.image(1075,440, 'gstone2').setOrigin(0,1);
+        Stone2.setTintFill(0xFF0000); // pratique pour dbugger
+        Stone2.scaleX=1.3;
+        Stone2.scaleY=2;
+        this.groundContainer.add(Stone);
 
 
         /**
@@ -186,23 +205,29 @@ class Tableau1 extends Phaser.Scene{
          * Terrain 4
          * @type {Phaser.GameObjects.Image}
          */
-            //ici on va calculer les positions
-        let gMid4=this.add.image(2000,350, 'gMid').setOrigin(0,0);
+        let gMid4=this.add.image(1050,400, 'gLeft').setOrigin(0,0);
         this.groundContainer.add(gMid4);
-
         /**
          * Terrain 5
          * @type {Phaser.GameObjects.Image}
          */
-        let gMid5=this.add.image(gMid4.x+gMid4.width,350, 'gLeft').setOrigin(0,0); //on rajoute 1 px pour l'exemple
+        let gMid5=this.add.image(gMid4.x+gMid4.width,400, 'gMid').setOrigin(0,0);
         this.groundContainer.add(gMid5);
-
         /**
          * Terrain 6
          * @type {Phaser.GameObjects.Image}
          */
-        let gMid6=this.add.image(gMid5.x+gMid5.width,350, 'gRight').setOrigin(0,0);
+        let gMid6=this.add.image(gMid5.x+gMid5.width,400, 'gMid').setOrigin(0,0);
         this.groundContainer.add(gMid6);
+        /**
+         * Terrain 6
+         * @type {Phaser.GameObjects.Image}
+         */
+        let gMid7=this.add.image(gMid6.x+gMid6.width,400, 'gRight').setOrigin(0,0);
+        this.groundContainer.add(gMid7);
+
+
+
         /**
          * De l'herbe en textures qui se répète
          * @type {Phaser.GameObjects.TileSprite}
@@ -244,7 +269,7 @@ class Tableau1 extends Phaser.Scene{
         //initialise ce qui se passe avec le clavier
         this.initKeyboard();
         // Définit l'espace de déplacement de la caméra
-        this.cameras.main.setBounds(0, 0, 2000, 540);
+        this.cameras.main.setBounds(0, 0, 2200, 540);
         //définit à quelles vitesse se déplacent nos différents plans
         bgAnimationA.scrollFactorX=0;
         this.filterFilm.scrollFactorX=0;
@@ -263,10 +288,10 @@ class Tableau1 extends Phaser.Scene{
             switch (kevent.keyCode)
             {
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.speed=1;
+                    me.speed=10;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.speed=-1;
+                    me.speed=-10;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.Q:
                     me.speed=-10;
