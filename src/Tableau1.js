@@ -143,6 +143,43 @@ class Tableau1 extends Phaser.Scene{
 
         //-------------ground (premier plan noir)---------------------------
 
+
+        this.player = this.add.sprite(700, -30, 'p-idle-anim-1').setOrigin(0,0);
+        this.anims.create({
+            key: 'idle1',
+            frames: [
+                {key:'p-idle-anim-1'},
+                {key:'p-idle-anim-2'},
+                {key:'p-idle-anim-3'},
+                {key:'p-idle-anim-4'},
+                {key:'p-idle-anim-5'},
+                {key:'p-idle-anim-6'},
+                {key:'p-idle-anim-7'},
+                {key:'p-idle-anim-8'},
+                {key:'p-idle-anim-9'},
+                {key:'p-idle-anim-10'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+        this.player.play('idle1');
+        this.player.scale=0.6
+
+        this.anims.create({
+            key: 'run',
+            frames: [
+                {key:'p-run-anim-1'},
+                {key:'p-run-anim-2'},
+                {key:'p-run-anim-3'},
+                {key:'p-run-anim-4'},
+                {key:'p-run-anim-5'},
+                {key:'p-run-anim-6'},
+                {key:'p-run-anim-7'},
+                {key:'p-run-anim-8'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
         /**
          * contient tous les éléments du premier plan (noir)
          * @type {Phaser.GameObjects.Container}
