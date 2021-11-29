@@ -33,22 +33,28 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gstone3', 'assets/level/ground/g-stone-5.png');
         this.load.image('Ftree', 'assets/level/ground/g-fellen-tree-1.png');
 
+        //boucle perso idle
+        for(let i=1;i<=10;i++){
+            this.load.image('p-idle-anim-'+i, 'assets/characters/boy/boy_style_1/PNG/idle/Layer-'+i+'.png');
+        }
+        for(let i=1;i<=8;i++){
+            this.load.image('p-run-anim-'+i, 'assets/characters/boy/boy_style_1/PNG/run/Layer-'+i+'.png');
+        }
         // Boucle zombie
         for(let i=1;i<=16;i++){
             this.load.image('Z'+i, 'assets/zombies/z'+i+'.png');
         }
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
-        // ALGO : ceci est une boucle
         for(let i=1;i<=5;i++){
             this.load.image('g-grass-'+i, 'assets/level/ground/g-grass-'+i+'.png');
         }
 
-        //filtre film TODO élève : faire une boucle à la place des 3 lignes qui suivent FAIT
+        //filtre film
         for(let i=1;i<=3;i++){
             this.load.image('filterFilm'+i, 'assets/level/filters/bloody/frame'+i+'.png');
         }
 
-        //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple FAIT
+        //texture au fond
         for(let i=1;i<=3;i++){
             this.load.image('bg-animation-'+i, 'assets/level/background-2/bg-animation/bg-animation-'+i+'.png');
         }
@@ -142,6 +148,55 @@ class Tableau1 extends Phaser.Scene{
          * @type {Phaser.GameObjects.Container}
          */
         this.groundContainer=this.add.container(0,0);
+
+
+        /**
+         * perso
+         * @type {Phaser.GameObjects.Image}
+         */
+        this.animp = this.add.sprite(400, -50, 'p-idle-anim-1').setOrigin(0,0);
+        this.anims.create({
+            key: 'pIdle',
+            frames: [
+                {key:'p-idle-anim-1'},
+                {key:'p-idle-anim-2'},
+                {key:'p-idle-anim-3'},
+                {key:'p-idle-anim-4'},
+                {key:'p-idle-anim-5'},
+                {key:'p-idle-anim-6'},
+                {key:'p-idle-anim-7'},
+                {key:'p-idle-anim-8'},
+                {key:'p-idle-anim-9'},
+                {key:'p-idle-anim-10'},
+            ],
+            frameRate: 16,
+            repeat: -1,
+
+        });
+        this.anims.create({
+            key: 'prun',
+            frames: [
+                {key:'p-idle-anim-1'},
+                {key:'p-run-anim-1'},
+                {key:'p-run-anim-2'},
+                {key:'p-run-anim-3'},
+                {key:'p-run-anim-4'},
+                {key:'p-run-anim-5'},
+                {key:'p-run-anim-6'},
+                {key:'p-run-anim-7'},
+                {key:'p-run-anim-8'},
+            ],
+            frameRate: 16,
+            repeat: -1,
+
+        });
+
+
+
+
+
+
+
         /**
          * Tree
          * @type {Phaser.GameObjects.Image}
@@ -440,8 +495,6 @@ class Tableau1 extends Phaser.Scene{
         });
         this.filterFilm.play('film');
 
-        //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
-
         //gestion du parallaxe
         /**
          * Vitesse de déplacement du décor
@@ -469,6 +522,9 @@ class Tableau1 extends Phaser.Scene{
         {
             switch (kevent.keyCode)
             {
+                case Phaser.Input.Keyboard.KeyCodes.L:
+                    me.animp.play('prun');
+                    break
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
                     me.speed=20;
                     break;
@@ -487,9 +543,18 @@ class Tableau1 extends Phaser.Scene{
         {
             switch (kevent.keyCode)
             {
+                case Phaser.Input.Keyboard.KeyCodes.L:
+                    me.animp.play('pIdle');
+                    break
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
+                    me.speed=0;
+                    break;
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
+                    me.speed=0;
+                    break;
                 case Phaser.Input.Keyboard.KeyCodes.D:
+                    me.speed=0;
+                    break;
                 case Phaser.Input.Keyboard.KeyCodes.Q:
                     me.speed=0;
                     break;
